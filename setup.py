@@ -7,7 +7,7 @@ setup(
     author="Wilhelm Gren",
     packages=find_packages(),
     install_requires=["certbot>=4.1.1", "acme>=4.1.1"],
-    py_modules=["certbot_plugin_dns_loopia"],
+    py_modules=["certbot_plugin_dns_loopia", "loopia_api"],
     entry_points={
         "certbot.plugins": [
             "dns-loopia = certbot_plugin_dns_loopia:LoopiaDnsAuthenticator",
