@@ -34,7 +34,7 @@ class LoopiaDnsAuthenticator(DNSAuthenticator):
         username = self.credentials.conf("username") or ""
         password = self.credentials.conf("password") or ""
 
-        response = loopia.add_zone_record(
+        loopia.add_zone_record(
             username=username,
             password=password,
             domain=domain,
@@ -46,8 +46,6 @@ class LoopiaDnsAuthenticator(DNSAuthenticator):
                 data=validation,
             ),
         )
-
-        logger.debug(f"Loopia API response: {ET.tostring(response)}")
 
     def _cleanup(self, domain: str, validation_name: str, validation: str) -> None:
         subdomain = self._get_subdomain(validation_name)

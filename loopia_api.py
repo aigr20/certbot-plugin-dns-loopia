@@ -16,7 +16,7 @@ def add_zone_record(
     domain: str,
     subdomain: str,
     record: "LoopiaApiRecordObj",
-) -> ET.Element:
+) -> None:
     request = (
         XmlRpcRequest("addZoneRecord")
         .add_param(username)
@@ -33,6 +33,12 @@ def add_zone_record(
     )
 
     response_xml = ET.fromstring(response.text)
+
+    logger.debug(
+        "Add record response: %s",
+        _pretty_print_xml_str(response.text) if response.text else "No response",
+    )
+
     first_param = response_xml.find(".//param//value")
     if first_param is None or not first_param.findtext("string") == "OK":
         logger.error(
@@ -40,7 +46,6 @@ def add_zone_record(
             f"Response: {response.text}"
         )
         raise Exception(f"Failed to add DNS record for {subdomain} in domain {domain}.")
-    return response_xml
 
 
 def find_zone_record_id(
