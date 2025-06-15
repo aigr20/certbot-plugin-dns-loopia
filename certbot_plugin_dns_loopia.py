@@ -1,5 +1,4 @@
 import logging
-import xml.etree.ElementTree as ET
 from typing import Callable
 
 from certbot.plugins.dns_common import DNSAuthenticator
@@ -10,6 +9,10 @@ logger = logging.getLogger(__name__)
 
 
 class LoopiaDnsAuthenticator(DNSAuthenticator):
+
+    description = (
+        "Obtain certificates using a DNS TXT record (if you are using Loopia DNS)."
+    )
 
     @classmethod
     def add_parser_arguments(
