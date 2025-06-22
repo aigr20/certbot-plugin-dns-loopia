@@ -8,9 +8,9 @@ A Certbot plugin for automatic completion of Certbot DNS challenges when your do
 $ pip install certbot-plugin-dns-loopia
 ```
 
-## Loopa API Permissions
+## Loopia API Permissions
 
-Your Loopa API user must have access to the following methods:
+Your Loopia API user must have access to the following methods:
 
 -   addZoneRecord
 -   getZoneRecords
